@@ -1,10 +1,14 @@
 <div class="nav-header">
   <div nz-row>
-    <div nz-col nzSpan="4" ><span style="font-size: 18px;color: #1890ff;font-weight: bold;"> <i class="iconfont iconip" style="font-size: 40px;"></i>2REGION</span></div>
-    <div nz-col nzSpan="8" ><span style="font-size: 18px;color: #1890ff;">欢迎加入我们，贡献你的代码</span></div>
+    <div nz-col nzSpan="4"><span style="font-size: 18px;color:
+        #1890ff;font-weight: bold;"> <i class="iconfont iconip"
+          style="font-size: 40px;"></i>2REGION</span></div>
+    <div nz-col nzSpan="8"><span style="font-size: 18px;color: #1890ff;">欢迎加入我们，贡献你的代码</span></div>
     <div nz-col nzSpan="12" style="text-align: right">
       <span style="position: absolute;right: -24px;">
-        <iframe src="https://ghbtns.com/github-btn.html?user=kisslove&repo=ip2region&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+        <iframe
+          src="https://ghbtns.com/github-btn.html?user=kisslove&repo=ip2region&type=star&count=true"
+          frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
       </span>
     </div>
   </div>
@@ -24,72 +28,94 @@
   </div>
 </section>
 <section class="section-contanier" style="height: 300px;">
-   <div class="section-overlay" style="opacity: 0.7;background-color: #222222;"></div>
-   <div class="section-block" style="background: repeat rgb(34,34,34) 50% 50% / cover fixed;background-image: url('../../assets/images/bg.jpg');">
-      <div style="color: #fff;position: relative;text-align: center;padding-top: 4%;">
-          <p style="font-size: 30px;">API 演示</p>
-            <input autofocus nz-input style="width: 300px;background: rgba(240, 248, 255, 0);color: #fff;" placeholder="输入IP" nzSize="large" />
-            <button nz-button nzGhost style="height: 40px;margin-left: 4px;width: 80px;vertical-align: top;">查询</button>
-      </div>
-   </div>
+  <div class="section-overlay" style="opacity: 0.7;background-color: #222222;"></div>
+  <div class="section-block" style="background: repeat rgb(34,34,34) 50% 50% /
+    cover fixed;background-image: url('../../assets/images/bg.jpg');">
+    <div style="color: #fff;position: relative;text-align: center;padding-top:
+      4%;">
+      <p style="font-size: 30px;">API 演示</p>
+      <input [(ngModel)]="ip" autofocus nz-input style="width: 300px;background:
+        rgba(240, 248, 255, 0);color: #fff;" placeholder="输入IP" nzSize="large"
+        />
+      <button [nzLoading]="isLoading" (click)="getIP()" nz-button nzGhost
+        style="height: 40px;margin-left: 4px;width: 80px;vertical-align: top;">查询</button>
+    </div>
+  </div>
 </section>
 
 <section style="background: #FAFBFB;height: 500px;padding: 24px;">
-<pre class="code-area">
-<span class="key">query</span>:<span class="value">182.148.26.91</span>
-<span class="key">status</span>:<span class="value">success</span>
-<span class="key">continent</span>:<span class="value">Asia</span>
-<span class="key">country</span>:<span class="value">China</span>
-<span class="key">countryCode</span>:<span class="value">CN</span>
-<span class="key">region</span>:<span class="value">SC</span>
-<span class="key">regionName</span>:<span class="value">Sichuan</span>
-<span class="key">city</span>:<span class="value">Chengdu</span>
+  <pre class="code-area">
+<span class="key">ip</span>:<span class="value">{{result.ip}}</span>
+<span class="key">country</span>:<span class="value">{{result.country}}</span>
+<span class="key">province</span>:<span class="value">{{result.province}}</span>
+<span class="key">city</span>:<span class="value">{{result.city}}</span>
+<span class="key">isp</span>:<span class="value">{{result.isp}}</span>
+</pre>
+  <pre class="code-area" style="width: 520px;margin-top: 24px;">
+  <span class="key">请求格式</span>:<span class="value">GET http://hubing.online:8085/getIP?ip=yourIP </span> 
+  <span class="key">返回结构</span>:<span class="value">
+    {{ '{' }}
+      success:true/false,
+      msg:'解析成功/解析失败',
+      data:{{ '{' }}
+        ip:"0.0.1",
+        country:"中国",
+        province:"四川",
+        city:"成都",
+        isp:"电信",
+      {{ '}' }}
+    {{ '}' }}</span> 
 </pre>
 </section>
 
 <section id="home-section2" style="width:100%;padding:25px 50px;">
-    <h3 style="margin-left: 16px;">支持作者(赏咖啡)</h3>
-    <img nz-tooltip nzTitle="关注公众号" style="width: 200px;margin: 8px 24px;" src="/assets/images/weixin-gongzhonghao.jpg" alt="公众号">
-    <img nz-tooltip nzTitle="支付宝赞赏" style="width: 175px;margin: 8px 24px;" src="/assets/images/zhifubao.png" alt="支付宝">
-    <img nz-tooltip nzTitle="微信赞赏" style="width: 175px;margin: 8px 24px;" src="/assets/images/weixin.png" alt="微信">
+  <h3 style="margin-left: 16px;">支持作者(赏咖啡)</h3>
+  <img nz-tooltip nzTitle="关注公众号" style="width: 200px;margin: 8px 24px;"
+    src="/assets/images/weixin-gongzhonghao.jpg" alt="公众号">
+  <img nz-tooltip nzTitle="支付宝赞赏" style="width: 175px;margin: 8px 24px;"
+    src="/assets/images/zhifubao.png" alt="支付宝">
+  <img nz-tooltip nzTitle="微信赞赏" style="width: 175px;margin: 8px 24px;"
+    src="/assets/images/weixin.png" alt="微信">
 </section>
 <section id="footer" style="width:100%;">
-    <div class="grid-fluid">
-        <div class="grid">
-            <h3>资源</h3>
-            <ul>
-                <li><a  target="_blank" href="https://angular.cn/" title="Angular官网">Angular</a></li>
-                <li><a  target="_blank" href="https://docs.mongodb.com/" title="数据库MongoDB">MongoDB</a>
-                </li>
-                <li><a  target="_blank" href="https://ant.design/" title="UI设计模式">Ant Design</a></li>
-                <li><a  target="_blank" href="https://ng.ant.design/"
-                        title="Ant Design的Angular实现">NG-ZORRO</a>
-                </li>
-            </ul>
-        </div>
-        <div class="grid">
-            <h3>帮助</h3>
-            <ul>
-                <li><a  target="_blank" href="https://github.com/kisslove/ip2region"
-                        title="源码仓库">GitHub</a></li>
-                <li><a  target="_blank" href="/assets/images/weixin-gongzhonghao.jpg"
-                        title="关注公众号">公众号</a>
-                </li>
-                <li><a  target="_blank" href="/assets/images/weixin.png" title="微信">支持作者</a></li>
-            </ul>
-        </div>
-        <div class="grid">
-            <h3>推广(招商中)</h3>
-            <ul>
-                <li><a  target="_blank" href="http://hubing.online:8083"
-                        title="从不同维度去统计用户真实访问站点的情况，再现用户访问场景，帮助你快速定位问题。">前端监控系统</a>
-                </li>
-                <li><a  target="_blank"
-                  href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=9xbvcsop">阿里云优惠购</a></li>
-                <li><a  target="_blank" href="http://coolwow.myselfbuy.com/"
-                  title="一款帮你选择贷款方式的多功能利息计算工具">酷娃利息对比计算工具</a>
-              </li>
-            </ul>
-        </div>
+  <div class="grid-fluid">
+    <div class="grid">
+      <h3>资源</h3>
+      <ul>
+        <li><a target="_blank" href="https://angular.cn/" title="Angular官网">Angular</a></li>
+        <li><a target="_blank" href="https://docs.mongodb.com/"
+            title="数据库MongoDB">MongoDB</a>
+        </li>
+        <li><a target="_blank" href="https://ant.design/" title="UI设计模式">Ant
+            Design</a></li>
+        <li><a target="_blank" href="https://ng.ant.design/"
+            title="Ant Design的Angular实现">NG-ZORRO</a>
+        </li>
+      </ul>
     </div>
+    <div class="grid">
+      <h3>帮助</h3>
+      <ul>
+        <li><a target="_blank" href="https://github.com/kisslove/ip2region"
+            title="源码仓库">GitHub</a></li>
+        <li><a target="_blank" href="/assets/images/weixin-gongzhonghao.jpg"
+            title="关注公众号">公众号</a>
+        </li>
+        <li><a target="_blank" href="/assets/images/weixin.png" title="微信">支持作者</a></li>
+      </ul>
+    </div>
+    <div class="grid">
+      <h3>推广(招商中)</h3>
+      <ul>
+        <li><a target="_blank" href="http://hubing.online:8083"
+            title="从不同维度去统计用户真实访问站点的情况，再现用户访问场景，帮助你快速定位问题。">前端监控系统</a>
+        </li>
+        <li><a target="_blank"
+            href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=9xbvcsop">阿里云优惠购</a></li>
+        <li><a target="_blank" href="http://coolwow.myselfbuy.com/"
+            title="一款帮你选择贷款方式的多功能利息计算工具">酷娃利息对比计算工具</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </section>
