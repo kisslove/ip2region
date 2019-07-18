@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 //查询IP
-router.get('/lookUpIp', function (req, res, next) {
+router.get('/lookUp', function (req, res, next) {
   if(!req.query.ip){
     res.json({
       success:false,
@@ -59,7 +59,8 @@ router.get('/getIp', function (req, res, next) {
   });
   return;
   }
-  searcher.binarySearch(req.ip, function (err, tempData) {
+  let ip = getClientIp(req).match(/\d+.\d+.\d+.\d+/)[0];
+  searcher.binarySearch(ip, function (err, tempData) {
     if (err) {
       res.json({
         success:false,
@@ -73,7 +74,7 @@ router.get('/getIp', function (req, res, next) {
         success:true,
         msg:'解析成功',
         data:{
-          ip:req.query.ip,
+          ip:ip,
           country:data[0],
           province:data[2],
           city:data[3],
@@ -83,4 +84,11 @@ router.get('/getIp', function (req, res, next) {
   });
 });
 
+
+let getClientIp = function (req) {
+  return req.headers['x-forwarded-for'] ||
+      req.connection.remoteAddress ||
+      req.socket.remoteAddress ||
+      req.connection.socket.remoteAddress || '';
+};
 module.exports = router;

@@ -37,10 +37,10 @@
       <input [(ngModel)]="ip" autofocus nz-input style="width: 300px;background:
         rgba(240, 248, 255, 0);color: #fff;" placeholder="输入IP" nzSize="large"
         />
-      <button [nzLoading]="isLoading" (click)="getIP()" nz-button nzGhost
+      <button [nzLoading]="isLoading" (click)="lookUp()" nz-button nzGhost
         style="height: 40px;margin-left: 4px;width: 80px;vertical-align: top;">查询</button>
     </div>
-  </div>
+  </div> 
 </section>
 
 <section style="background: #FAFBFB;height: 500px;padding: 24px;">
@@ -52,8 +52,8 @@
 <span class="key">isp</span>:<span class="value">{{result.isp}}</span>
 </pre>
   <pre class="code-area" style="width: 520px;margin-top: 24px;">
-  <span class="key">请求格式</span>:<span class="value">GET http://hubing.online:8085/getIP?ip=yourIP </span> 
-  <span class="key">返回结构</span>:<span class="value">
+  <span class="key">请求格式</span>:<span class="value">GET http://hubing.online:8085/lookUp?ip=yourIP </span> 
+  <span class="key">返回结构(模拟数据)</span>:<span class="value">
     {{ '{' }}
       success:true/false,
       msg:'解析成功/解析失败',

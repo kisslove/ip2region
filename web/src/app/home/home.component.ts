@@ -24,10 +24,10 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getIP();
+    this.getIp();
   }
 
-  getIP() {
+  getIp() {
     this.isLoading = true;
     this.http.get(environment.api + 'getIp').subscribe((r: any) => {
       this.result = r.data;
@@ -39,9 +39,9 @@ export class HomeComponent implements OnInit {
     })
 
   }
-  lookUpIp() {
+  lookUp() {
     this.isLoading = true;
-    this.http.get(environment.api + 'lookUpIp', {
+    this.http.get(environment.api + 'lookUp', {
       params: {
         ip: this.ip
       }
