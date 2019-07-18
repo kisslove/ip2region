@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { HomeComponent } from './home/home.component';
+import { BaiduMapModule } from 'angular2-baidu-map';
 
 registerLocaleData(zh);
 
@@ -20,6 +21,7 @@ registerLocaleData(zh);
   ],
   imports: [
     BrowserModule,
+    BaiduMapModule.forRoot({ak: 'qTl3nXaK6RIcyT2tQFp1pYXQ'}),
     AppRoutingModule,
     NgZorroAntdModule,
     FormsModule,

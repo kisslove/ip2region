@@ -43,29 +43,39 @@
   </div> 
 </section>
 
-<section style="background: #FAFBFB;height: 500px;padding: 24px;">
-  <pre class="code-area">
-<span class="key">ip</span>:<span class="value">{{result.ip}}</span>
-<span class="key">country</span>:<span class="value">{{result.country}}</span>
-<span class="key">province</span>:<span class="value">{{result.province}}</span>
-<span class="key">city</span>:<span class="value">{{result.city}}</span>
-<span class="key">isp</span>:<span class="value">{{result.isp}}</span>
+<section style="background: #FAFBFB;height: 500px;padding: 24px;position: relative;">
+<pre class="code-area" style="position: absolute;top: -76px;left: 50%;margin-left: -200px;border-left: solid 3px #655637;
+box-shadow: 0px 1px 3px #655637;">
+<span class="key">ip</span>:<span class="value">{{result.data.ip}}</span>
+<span class="key">country</span>:<span class="value">{{result.data.country}}</span>
+<span class="key">province</span>:<span class="value">{{result.data.province}}</span>
+<span class="key">city</span>:<span class="value">{{result.data.city}}</span>
+<span class="key">isp</span>:<span class="value">{{result.data.isp}}</span>
 </pre>
-  <pre class="code-area" style="width: 520px;margin-top: 24px;">
-  <span class="key">请求格式</span>:<span class="value">GET http://hubing.online:8085/lookUp?ip=yourIP </span> 
-  <span class="key">返回结构(模拟数据)</span>:<span class="value">
-    {{ '{' }}
-      success:true/false,
-      msg:'解析成功/解析失败',
-      data:{{ '{' }}
-        ip:"0.0.1",
-        country:"中国",
-        province:"四川",
-        city:"成都",
-        isp:"电信",
-      {{ '}' }}
-    {{ '}' }}</span> 
-</pre>
+<div class="row" style="margin-top: 80px;">
+  <div  nz-col nzSpan="12">
+    <pre class="code-area" style="width: 100%;margin: 0px;">
+      <span class="key">请求格式</span>:<span class="value">GET http://hubing.online:8085/lookUp?ip="{{ip}}" </span> 
+      <span class="key">返回结构</span>:<span class="value">
+          {{ '{' }}
+            success:{{result.success}},
+            msg:"{{result.msg}}",
+            data:{{ '{' }}
+              ip:"{{result.data.ip}}",
+              country:"{{result.data.country}}",
+              province:"{{result.data.province}}",
+              city:"{{result.data.city}}",
+              isp:"{{result.data.isp}}"
+            {{ '}' }}
+          {{ '}' }}</span> 
+      </pre>
+  </div>
+  <div  nz-col nzSpan='12' style="padding: 5%;">
+    <baidu-map (loaded)="initData($event)" [options]="options"
+    style="display: block; width: 100%;height: 200px;">
+    </baidu-map>
+  </div> 
+</div> 
 </section>
 
 <section id="home-section2" style="width:100%;padding:25px 50px;">
