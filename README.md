@@ -8,7 +8,7 @@ ip在线转换工具
 - 开源免费，可二次开发，直接查看源码
 
 # 使用
-请求格式:GET http://hubing.online:8085/lookUp?ip=yourIP  
+请求格式:GET http://smallsite.online:8085/lookUp?ip=yourIP  
 返回结构(模拟数据):
 ```javascript
 {
